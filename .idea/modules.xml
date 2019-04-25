@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DisplayOledI2C.iml" filepath="$PROJECT_DIR$/DisplayOledI2C.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../Tools/pi-ssd1306-java-master/PiSsd1306Java.iml" filepath="$PROJECT_DIR$/../../Tools/pi-ssd1306-java-master/PiSsd1306Java.iml" />
+    </modules>
+  </component>
+</project>

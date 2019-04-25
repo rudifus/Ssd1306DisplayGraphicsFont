@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ssd1306display">
+    <output-path>$PROJECT_DIR$/out/artifacts/ssd1306display</output-path>
+    <root id="archive" name="ssd1306display.jar">
+      <element id="module-output" name="PiSsd1306Java" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/../../Tools/pi-ssd1306-java-master/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

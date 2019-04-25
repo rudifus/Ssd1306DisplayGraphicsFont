@@ -1,0 +1,7 @@
+*.iml
+/local.properties
+.DS_Store
+/out
+/module_displayoledi2c_Wed_Apr_03_12-51-51_CEST_2019.xml
+/oled_i2c_1_Wed_Apr_03_12-51-51_CEST_2019.properties
+/oled_i2c_1_Wed_Apr_03_16-15-43_CEST_2019.xml

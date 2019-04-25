@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_displayoledi2c" default="compile.module.displayoledi2c">
+  <dirname property="module.displayoledi2c.basedir" file="${ant.file.module_displayoledi2c}"/>
+  
+  <property name="module.jdk.home.displayoledi2c" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.displayoledi2c" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.displayoledi2c" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.displayoledi2c" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="displayoledi2c.output.dir" value="${module.displayoledi2c.basedir}/out/production/DisplayOledI2C"/>
+  <property name="displayoledi2c.testoutput.dir" value="${module.displayoledi2c.basedir}/out/test/DisplayOledI2C"/>
+  
+  <path id="displayoledi2c.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="displayoledi2c.module.production.classpath">
+    <path refid="${module.jdk.classpath.displayoledi2c}"/>
+    <path refid="library.pi4j-core.classpath"/>
+    <pathelement location="${pissd1306java.output.dir}"/>
+  </path>
+  
+  <path id="displayoledi2c.runtime.production.module.classpath">
+    <pathelement location="${displayoledi2c.output.dir}"/>
+    <path refid="library.pi4j-core.classpath"/>
+    <path refid="pissd1306java.runtime.production.module.classpath"/>
+  </path>
+  
+  <path id="displayoledi2c.module.classpath">
+    <path refid="${module.jdk.classpath.displayoledi2c}"/>
+    <pathelement location="${displayoledi2c.output.dir}"/>
+    <path refid="library.pi4j-core.classpath"/>
+    <pathelement location="${pissd1306java.testoutput.dir}"/>
+    <pathelement location="${pissd1306java.output.dir}"/>
+  </path>
+  
+  <path id="displayoledi2c.runtime.module.classpath">
+    <pathelement location="${displayoledi2c.testoutput.dir}"/>
+    <pathelement location="${displayoledi2c.output.dir}"/>
+    <path refid="library.pi4j-core.classpath"/>
+    <path refid="pissd1306java.runtime.module.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.displayoledi2c">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.displayoledi2c">
+    <patternset refid="excluded.from.module.displayoledi2c"/>
+  </patternset>
+  
+  <path id="displayoledi2c.module.sourcepath">
+    <dirset dir="${module.displayoledi2c.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.displayoledi2c" depends="compile.module.displayoledi2c.production,compile.module.displayoledi2c.tests" description="Compile module DisplayOledI2C"/>
+  
+  <target name="compile.module.displayoledi2c.production" depends="register.custom.compilers,compile.module.pissd1306java" description="Compile module DisplayOledI2C; production classes">
+    <mkdir dir="${displayoledi2c.output.dir}"/>
+    <javac2 destdir="${displayoledi2c.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.displayoledi2c}/javac">
+      <compilerarg line="${compiler.args.displayoledi2c}"/>
+      <bootclasspath refid="displayoledi2c.module.bootclasspath"/>
+      <classpath refid="displayoledi2c.module.production.classpath"/>
+      <src refid="displayoledi2c.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.displayoledi2c"/>
+    </javac2>
+    
+    <copy todir="${displayoledi2c.output.dir}">
+      <fileset dir="${module.displayoledi2c.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.displayoledi2c.tests" depends="register.custom.compilers,compile.module.displayoledi2c.production" description="compile module DisplayOledI2C; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.displayoledi2c" description="cleanup module">
+    <delete dir="${displayoledi2c.output.dir}"/>
+    <delete dir="${displayoledi2c.testoutput.dir}"/>
+  </target>
+</project>
